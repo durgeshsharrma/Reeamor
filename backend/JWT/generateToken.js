@@ -11,7 +11,7 @@ module.exports.generateToken = async (userId, res) => {
     res.cookie('jwt', token, {
         expires: new Date(Date.now() + 600000),
         httpOnly: true,
-        secure: false,
+        secure: true,
         sameSite: 'None'
     });
     console.log(token);
