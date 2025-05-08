@@ -1,26 +1,22 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
 import axios from 'axios'
-import Swal from 'sweetalert2'; // Import SweetAlert2
+import Swal from 'sweetalert2';
 import { useAuth } from '../Context/AuthProvider';
-import { Link, Navigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
-    const [authUser, setAuthUser] = useAuth()
-
-
+    const [authUser, setAuthUser] = useAuth();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = async (data) => {
 
+    const onSubmit = async (data) => {
         const userData = {
             firstName: data.firstName,
             lastName: data.lastName,
             email: data.email,
             password: data.password,
             confirmPassword: data.confirmPassword
-        }
-
+        };
 
         await axios.post('http://localhost:4000/signup', userData, { withCredentials: true })
             .then((res) => {
@@ -36,13 +32,8 @@ const Signup = () => {
                     timerProgressBar: true
                 });
                 localStorage.setItem('user', JSON.stringify(res.data.user))
-
                 setAuthUser(res.data.user)
-
-                //   console.log(res.data.user)
-
             })
-
             .catch((err) => {
                 if (err.response.data.error) {
                     Swal.fire({
@@ -58,96 +49,102 @@ const Signup = () => {
                     });
                 }
             })
-
     };
 
     return (
-        <>
+        <div className="flex flex-col md:flex-row h-screen">
+            {/* Left Image Section */}
+            <div className="hidden md:flex md:w-1/2 bg-green-100 justify-center items-center p-8">
+                <img
+                    src="https://img.freepik.com/free-vector/group-chat-concept-illustration_114360-1476.jpg"
+                    alt="Chat Illustration"
+                    className="w-full max-w-md rounded-xl shadow-lg"
+                />
+            </div>
 
-            <div className='md:flex h-screen items-center w-full'>
+            {/* Signup Form */}
+            <div className="flex-1 flex items-center justify-center p-8 bg-gray-100">
+                <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-lg">
+                    <h1 className="text-4xl font-bold text-green-600 text-center mb-6">Chat<span className="text-black">App</span></h1>
+                    <h2 className="text-2xl font-semibold mb-6 text-gray-800">Create your account</h2>
+                    <form onSubmit={handleSubmit(onSubmit)}>
 
-                <div className='md:w-[50%] w-full  flex items-center justify-center bg-cover bg-center'>
+                        {/* First Name */}
+                        <div className="mb-4">
+                            <input
+                                {...register("firstName", { required: true })}
+                                type="text"
+                                placeholder="First Name"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+                            />
+                            {errors.firstName && <p className="text-red-500 text-sm mt-1">First name is required</p>}
+                        </div>
 
+                        {/* Last Name */}
+                        <div className="mb-4">
+                            <input
+                                {...register("lastName", { required: true })}
+                                type="text"
+                                placeholder="Last Name"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+                            />
+                            {errors.lastName && <p className="text-red-500 text-sm mt-1">Last name is required</p>}
+                        </div>
 
-                    <img
-                        src="https://img.freepik.com/free-vector/group-chat-concept-illustration_114360-1476.jpg?t=st=1742289120~exp=1742292720~hmac=3df608ab1f20c2a7f48c4a351786f646124eeccad997dbc58b5d079a171009a2&w=740"
-                        alt="Group Chat"
-                        className="max-w-full max-h-screen object-cover"
-                    />
+                        {/* Email */}
+                        <div className="mb-4">
+                            <input
+                                {...register("email", { required: true })}
+                                type="email"
+                                placeholder="Email Address"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+                            />
+                            {errors.email && <p className="text-red-500 text-sm mt-1">Email is required</p>}
+                        </div>
 
-                </div>
+                        {/* Password */}
+                        <div className="mb-4">
+                            <input
+                                {...register("password", { required: true })}
+                                type="password"
+                                placeholder="Password"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+                            />
+                            {errors.password && <p className="text-red-500 text-sm mt-1">Password is required</p>}
+                        </div>
 
+                        {/* Confirm Password */}
+                        <div className="mb-6">
+                            <input
+                                {...register("confirmPassword", {
+                                    required: true,
+                                    validate: (value) => value === watch("password") || "Passwords do not match"
+                                })}
+                                type="password"
+                                placeholder="Confirm Password"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+                            />
+                            {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword.message || "Confirm Password is required"}</p>}
+                        </div>
 
-                <div className='flex-1 flex  items-center justify-center center p-8'>
+                        <button
+                            type="submit"
+                            className="w-full py-3 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition duration-300"
+                        >
+                            Sign Up
+                        </button>
 
-                    <div className='shadow-emerald-600 shadow-lg w-full'>
-                        <h1 className='text-3xl text-center text-green-500 mt-3 font-bold'>Chat<span className='text-black text-4xl'>App</span></h1>
-                        <form onSubmit={handleSubmit(onSubmit)} action="" className='p-8 w-full'>
-                            <h1 className='text-3xl text-start font-bold mb-5'>Signup</h1>
-
-                            <div className='mb-5'>
-                                <label className="input w-full">
-                                    <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></g></svg>
-                                    <input {...register("firstName", { required: true })} type="input" placeholder="First Name" pattern="[A-Za-z][A-Za-z0-9\-]*" minlength="3" maxlength="30" title="Only letters, numbers or dash" />
-                                </label>
-                                {errors.firstName && <span className='text-red-500 font-semibold'>*This field is required</span>}
-
-                            </div>
-
-                            <div className='mb-5'>
-                                <label className="input w-full">
-                                    <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></g></svg>
-                                    <input {...register("lastName", { required: true })} type="input" placeholder="Last Name" pattern="[A-Za-z][A-Za-z0-9\-]*" minlength="3" maxlength="30" title="Only letters, numbers or dash" />
-                                </label>
-                                {errors.lastName && <span className='text-start font-semibold text-red-500'>*This field is required</span>}
-                            </div>
-
-
-
-
-
-
-
-
-
-                            <div className='mb-5'>
-                                <label className="input w-full">
-                                    <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></g></svg>
-                                    <input {...register("email", { required: true })} type="email" placeholder="mail@site.com" />
-                                </label>
-                                {errors.email && <span className='text-start font-semibold text-red-500'>*This field is required</span>}
-                            </div>
-
-
-
-                            <div className='mb-5'>
-                                <label className="input w-full">
-                                    <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle></g></svg>
-                                    <input {...register("password", { required: true, validate: (value) => value === watch("password") || "Passwords don't match" })} type="password" placeholder="*********" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
-                                </label>
-                                {errors.password && <span className='text-start font-semibold text-red-500'>This field is required</span>}
-                            </div>
-
-
-
-                            <div className='mb-5'>
-                                <label className="input w-full">
-                                    <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle></g></svg>
-                                    <input {...register("confirmPassword", { required: true, validate: (value) => value === watch("password") || "Passwords don't match" })} type="password" placeholder="*********" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
-                                </label>
-                                {errors.confirmPassword && <span className='text-start font-semibold text-red-500'>This field is required</span>}
-                            </div>
-
-
-
-                            <button type="submit" className='btn btn-warning w-full mb-3'>Signup</button>
-                            <p>Do you have an Account? <Link className='text-blue-600' to='/login'>Login</Link></p>
-                        </form>
-                    </div>
+                        <p className="text-center mt-4 text-gray-600">
+                            Already have an account?{" "}
+                            <Link className="text-blue-600 hover:underline" to="/login">
+                                Login
+                            </Link>
+                        </p>
+                    </form>
                 </div>
             </div>
-        </>
-    )
-}
+        </div>
+    );
+};
 
-export default Signup
+export default Signup;
