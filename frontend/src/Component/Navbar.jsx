@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer  ,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'; // Import SweetAlert2
@@ -69,10 +69,10 @@ const Navbar = () => {
                 <div className="ml-auto flex items-center">
                     {/* Desktop Nav */}
                     <ul className="hidden md:flex space-x-8 text-gray-700 font-medium">
-                        <li><a style={{ textDecoration: 'none' }} href="#home" className="hover:text-blue-600 text-xl">Home</a></li>
-                        <li><a style={{ textDecoration: 'none' }}  href="#about" className="hover:text-blue-600 text-xl">About</a></li>
-                        <li><a style={{ textDecoration: 'none' }}  href="#investment" className="hover:text-blue-600 text-xl">Investment</a></li>
-                        <li><a style={{ textDecoration: 'none' }} href="#contact" className="hover:text-blue-600 text-xl">Contact</a></li>
+                        <li><a style={{ textDecoration: 'none' }} href="#home" className="hover:text-blue-600 text-gray-700  text-xl">Home</a></li>
+                        <li><a style={{ textDecoration: 'none' }} href="#about" className="hover:text-blue-600 text-gray-700  text-xl">About</a></li>
+                        <li><a style={{ textDecoration: 'none' }} href="#features" className="hover:text-blue-600 text-gray-700  text-xl">Feature</a></li>
+                        <li><a style={{ textDecoration: 'none' }} href="#stories" className="hover:text-blue-600  text-gray-700 text-xl">Stories</a></li>
                     </ul>
 
                     {/* Button */}

@@ -94,14 +94,14 @@ const Stories = () => {
 
                                 {/* Slide-up Description */}
                                 <div
-                                    className={`absolute left-0 w-full px-4 py-3 text-white bg-black bg-opacity-80 text-sm h-[30%] transition-all duration-500 ease-in-out z-20 ${isActive ? 'bottom-[30%]' : 'bottom-[-100%]'
+                                    className={`absolute left-0 w-full px-4 py-3 text-white bg-[#856fbb] bg-opacity-80 text-sm h-[30%] transition-all duration-500 ease-in-out z-20 ${isActive ? 'bottom-[30%]' : 'bottom-[-100%]'
                                         } group-hover:bottom-[30%]`}
                                 >
                                     {story.description}
                                 </div>
 
                                 {/* Name at the bottom */}
-                                <div className="absolute bottom-0 w-full bg-black bg-opacity-60 text-white text-lg font-semibold py-3 px-4 z-10">
+                                <div className="absolute bottom-0 w-full  bg-[#856fbb] bg-opacity-60 text-white text-lg font-semibold py-3 px-4 z-10">
                                     {story.name}
                                 </div>
                             </div>
