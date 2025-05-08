@@ -69,10 +69,10 @@ const Navbar = () => {
                 <div className="ml-auto flex items-center">
                     {/* Desktop Nav */}
                     <ul className="hidden md:flex space-x-8 text-gray-700 font-medium">
-                        <li><a href="#home" className="hover:text-blue-600 text-xl">Home</a></li>
-                        <li><a href="#about" className="hover:text-blue-600 text-xl">About</a></li>
-                        <li><a href="#investment" className="hover:text-blue-600 text-xl">Investment</a></li>
-                        <li><a href="#contact" className="hover:text-blue-600 text-xl">Contact</a></li>
+                        <li><a style={{ textDecoration: 'none' }} href="#home" className="hover:text-blue-600 text-xl">Home</a></li>
+                        <li><a style={{ textDecoration: 'none' }}  href="#about" className="hover:text-blue-600 text-xl">About</a></li>
+                        <li><a style={{ textDecoration: 'none' }}  href="#investment" className="hover:text-blue-600 text-xl">Investment</a></li>
+                        <li><a style={{ textDecoration: 'none' }} href="#contact" className="hover:text-blue-600 text-xl">Contact</a></li>
                     </ul>
 
                     {/* Button */}
@@ -90,7 +90,7 @@ const Navbar = () => {
                             <button onClick={handleLogout} className="transition-transform duration-200 hover:-translate-y-1">Logout</button>
                         ) : (
                             // <Link to="/login">Login</Link>
-                                <Link to='/login' className="bg-[#856fbb] fs-6 font-bold text-white text-xl px-6 py-2 rounded transition">
+                                <Link style={{ textDecoration: 'none' }} to='/login' className="bg-[#856fbb] fs-6 font-bold text-white text-xl px-6 py-2 rounded transition">
                                     Login
                                 </Link>
                         )}
@@ -140,10 +140,10 @@ const Navbar = () => {
             {/* Mobile Menu */}
             {isOpen && (
                 <div className="md:hidden px-6 pb-4 space-y-2 text-gray-700">
-                    <a href="#home" className="block text-xl font-semibold hover:text-blue-600">Home</a>
-                    <a href="#about" className="block text-xl mt-6 font-semibold hover:text-blue-600">About</a>
-                    <a href="#investment" className="block text-xl mt-6 font-semibold hover:text-blue-600">Investment</a>
-                    <a href="#contact" className="block text-xl mt-6 font-semibold hover:text-blue-600">Contact</a>
+                    <a style={{textDecoration :'none'}} href="#home" className="block text-xl font-semibold hover:text-blue-600">Home</a>
+                    <a style={{ textDecoration: 'none' }} href="#about" className="block text-xl mt-6 font-semibold hover:text-blue-600">About</a>
+                    <a style={{ textDecoration: 'none' }} href="#investment" className="block text-xl mt-6 font-semibold hover:text-blue-600">Investment</a>
+                    <a style={{ textDecoration: 'none' }} href="#contact" className="block text-xl mt-6 font-semibold hover:text-blue-600">Contact</a>
                    
 
                     {/* Button */}
@@ -152,6 +152,14 @@ const Navbar = () => {
                             Download
                         </button>
                     </div>
+                    {authUser ? (
+                        <button onClick={handleLogout} className="transition-transform duration-200 hover:-translate-y-1">Logout</button>
+                    ) : (
+                        // <Link to="/login">Login</Link>
+                            <Link to='/login' style={{ textDecoration: 'none' }} className="bg-[#856fbb] fs-6 font-bold text-white text-xl px-6 py-2 rounded transition">
+                            Login
+                        </Link>
+                    )}
                 </div>
             )}
         </nav>
