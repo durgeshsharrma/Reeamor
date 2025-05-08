@@ -5,8 +5,19 @@ const About = () => {
         <>
             <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen px-6 mt-[4rem] gap-8">
 
+
+                {/* Left Section - Image (comes second on small screens) */}
+                <div className="order-2 lg:order-1 lg:w-1/2 w-full flex justify-center">
+                    <img
+                        src="https://reeamor.com/Images/about.png"
+                        alt="Hero Visual"
+                        className="w-auto h-auto"
+                    />
+                </div>
+
+
                 {/* Right Section - Content (comes first on small screens) */}
-                <div className="order-1 lg:order-2 lg:w-1/2 w-full flex justify-center">
+                <div className="order-1 md:order-2 lg:order-2 lg:w-1/2 w-full flex justify-center">
                     <div className="flex flex-col justify-center text-center lg:text-left p-5 max-w-xl">
                         <h4 className="text-[#212529] text-[23.619px] leading-tight">
                             About
@@ -29,14 +40,7 @@ const About = () => {
                     </div>
                 </div>
 
-                {/* Left Section - Image (comes second on small screens) */}
-                <div className="order-2 lg:order-1 lg:w-1/2 w-full flex justify-center">
-                    <img
-                        src="https://reeamor.com/Images/about.png"
-                        alt="Hero Visual"
-                        className="w-auto h-auto"
-                    />
-                </div>
+              
 
             </div>
         </>

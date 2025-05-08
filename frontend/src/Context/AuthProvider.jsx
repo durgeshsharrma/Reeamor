@@ -4,7 +4,7 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
 
-    const initialState = localStorage.getItem('chatApp') ? JSON.parse(localStorage.getItem('chatApp')) : null
+    const initialState = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null
     const [AuthUser, setAuthUser] = useState(initialState)
 
     return (

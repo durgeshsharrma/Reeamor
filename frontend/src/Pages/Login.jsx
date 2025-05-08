@@ -4,12 +4,17 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useAuth } from '../Context/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Cookies from 'js-cookie'
 
 const Login = () => {
     const [authUser, setAuthUser] = useAuth();
     const navigate = useNavigate();
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+ 
+
 
     const onSubmit = (data) => {
         const userData = {
@@ -33,6 +38,7 @@ const Login = () => {
                 localStorage.setItem('user', JSON.stringify(res.data.user));
                 setAuthUser(res.data.data);
                 navigate('/');
+                window.location.reload(); // Reload the page to reflect the changes
             })
             .catch((err) => {
                 if (err.response?.data?.error) {
@@ -101,7 +107,7 @@ const Login = () => {
                         {/* Submit */}
                         <button
                             type="submit"
-                            className="w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700 transition"
+                            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
                         >
                             Login
                         </button>

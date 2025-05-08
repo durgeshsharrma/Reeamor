@@ -4,6 +4,8 @@ import axios from 'axios'
 import Swal from 'sweetalert2';
 import { useAuth } from '../Context/AuthProvider';
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie'
+import Button from 'react-bootstrap/Button';
 
 const Signup = () => {
     const [authUser, setAuthUser] = useAuth();
@@ -33,6 +35,7 @@ const Signup = () => {
                 });
                 localStorage.setItem('user', JSON.stringify(res.data.user))
                 setAuthUser(res.data.user)
+                window.location.href = '/'; // Redirect to login page after signup
             })
             .catch((err) => {
                 if (err.response.data.error) {
@@ -50,6 +53,9 @@ const Signup = () => {
                 }
             })
     };
+
+
+
 
     return (
         <div className="flex flex-col md:flex-row h-screen">
@@ -129,9 +135,9 @@ const Signup = () => {
 
                         <button
                             type="submit"
-                            className="w-full py-3 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition duration-300"
+                            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
                         >
-                            Sign Up
+                            Login
                         </button>
 
                         <p className="text-center mt-4 text-gray-600">

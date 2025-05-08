@@ -24,35 +24,35 @@ const storiesData = [
          image: 'https://reeamor.com/Images/Image-2.png',
     },
     {
-        id: 3,
-        name: 'Rohan Verma',
-        description:
-            'Reeamor helped me reconnect with my emotional side and meet people who truly understand.',
-         image: 'https://reeamor.com/Images/Image-2.png',
-    },
-    {
-        id: 3,
-        name: 'Rohan Verma',
-        description:
-            'Reeamor helped me reconnect with my emotional side and meet people who truly understand.',
-         image: 'https://reeamor.com/Images/Image-2.png',
-    },
-    {
-        id: 3,
-        name: 'Rohan Verma',
-        description:
-            'Reeamor helped me reconnect with my emotional side and meet people who truly understand.',
-         image: 'https://reeamor.com/Images/Image-2.png',
-    },
-    {
-        id: 3,
-        name: 'Rohan Verma',
-        description:
-            'Reeamor helped me reconnect with my emotional side and meet people who truly understand.',
-         image: 'https://reeamor.com/Images/Image-2.png',
-    },
-    {
         id: 4,
+        name: 'Rohan Verma',
+        description:
+            'Reeamor helped me reconnect with my emotional side and meet people who truly understand.',
+         image: 'https://reeamor.com/Images/Image-2.png',
+    },
+    {
+        id: 5,
+        name: 'Rohan Verma',
+        description:
+            'Reeamor helped me reconnect with my emotional side and meet people who truly understand.',
+         image: 'https://reeamor.com/Images/Image-2.png',
+    },
+    {
+        id: 6,
+        name: 'Rohan Verma',
+        description:
+            'Reeamor helped me reconnect with my emotional side and meet people who truly understand.',
+         image: 'https://reeamor.com/Images/Image-2.png',
+    },
+    {
+        id: 7,
+        name: 'Rohan Verma',
+        description:
+            'Reeamor helped me reconnect with my emotional side and meet people who truly understand.',
+         image: 'https://reeamor.com/Images/Image-2.png',
+    },
+    {
+        id: 8,
         name: 'Priya Singh',
         description:
             'The companionship I found here has been life-changing. There’s always someone to listen.',
